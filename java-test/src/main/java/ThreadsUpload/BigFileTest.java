@@ -43,8 +43,8 @@ public class BigFileTest {
 
 
 	
-	static final String ACCESS_KEY = "633FP5V4V3HI31O9D9PH";
-	static final String SECRET_KEY = "DWLsoZOY9d1Jwee72jAsndLmhYXxzSzMwL1LKAoN";
+	static final String ACCESS_KEY = "***********";
+	static final String SECRET_KEY = "*****************;
 	static final String endpoint = "http://cos.iflytek.com"; 
 	
 	
