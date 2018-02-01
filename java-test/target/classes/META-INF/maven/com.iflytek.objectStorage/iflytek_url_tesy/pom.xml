@@ -1,0 +1,383 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.iflytek.objectStorage</groupId>
+  <artifactId>iflytek_url_tesy</artifactId>
+  <version>1.0.1.1002</version>
+  <packaging>jar</packaging>
+
+  <name>iflytek_object_storage</name>
+  <url>http://maven.apache.org</url>
+
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+	</parent>
+
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <jetty.version>8.1.15.v20140411</jetty.version>
+        <jetty-jsp.version>2.2.0.v201112011158</jetty-jsp.version>
+        <java.version>1.8</java.version>
+        <swagger.version>2.6.1</swagger.version>
+        <shiro.version>1.3.0</shiro.version>
+        <xstream.version>1.4.7</xstream.version>
+        <pageHelper.version>4.1.6</pageHelper.version>
+        <fastjson.version>1.2.21</fastjson.version>
+        <openstack4j.version>3.1.0-ccr1.0.1</openstack4j.version>
+        <logback-classic.version>1.1.7</logback-classic.version>
+        <logback-core.version>1.1.7</logback-core.version>
+        <radosgw-admin4j.version>1.0.1</radosgw-admin4j.version>
+        <aws-java-sdk.version>1.11.243</aws-java-sdk.version>
+        
+    </properties>
+    
+    <dependencyManagement>
+    <dependencies>
+        <dependency>
+        
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>Camden.SR7</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+	</dependencyManagement>
+
+    <dependencies>
+    	<!-- S3工具包 -->
+    	<dependency>
+	      <groupId>com.amazonaws</groupId>
+	      <artifactId>aws-java-sdk-core</artifactId>
+	      <version>${aws-java-sdk.version}</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>com.amazonaws</groupId>
+	      <artifactId>aws-java-sdk-s3</artifactId>
+	      <version>${aws-java-sdk.version}</version>
+	    </dependency>
+  		
+  		
+  		<!--  radosgw-admin4j-->
+  		<dependency>
+  		   		<groupId>io.github.twonote</groupId>
+			    <artifactId>radosgw-admin4j</artifactId>
+			    <version>1.0.1</version>
+  		</dependency>
+  		<!-- 文件上传 -->
+  		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.3.1</version>
+		</dependency>
+  	
+    	<!-- 暂时用来修改文件后不用重启项目 -->
+       	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+        <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+         <!-- 包含支持UI模版（Velocity，FreeMarker，JasperReports）， 邮件服务， 脚本服务(JRuby)， 缓存Cache（EHCache），   
+            任务计划Scheduling（uartz）。 -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-context-support</artifactId>  
+        </dependency>
+         <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-redis</artifactId>
+		    <version>1.4.7.RELEASE</version>
+		</dependency>
+        <dependency>  
+		    <groupId>com.jayway.jsonpath</groupId>  
+		    <artifactId>json-path</artifactId>  
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.tobato</groupId>
+			<artifactId>fastdfs-client</artifactId>
+			<version>1.25.2-RELEASE</version>
+		</dependency>
+		
+    	<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>${xstream.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>2.2</version>
+        </dependency>
+        
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>org.springframework.boot</groupId>
+		            <artifactId>spring-boot-starter-tomcat</artifactId>
+		        </exclusion>
+		    </exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+		
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+		
+		<!-- 对redis支持,引入的话项目缓存就支持redis了,所以必须加上redis的相关配置,否则操作相关缓存会报异常 -->
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency> -->
+
+		<!-- servlet支持开启 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+        
+        <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        
+        <dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-guice</artifactId>
+		    <version>${shiro.version}</version>
+		</dependency>
+		
+		
+		
+		<!-- zipkin -->
+		<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+		
+		<dependency>  
+             <groupId>io.zipkin.brave</groupId>  
+              <artifactId>brave-core</artifactId>  
+              <version>3.9.0</version>  
+          </dependency>  
+		<!--
+		  <dependency>  
+             <groupId>io.zipkin.reporter</groupId>  
+             <artifactId>zipkin-reporter-urlconnection</artifactId>  
+             <version>0.2.0</version>  
+          </dependency>  
+          -->  
+          <dependency>  
+              <groupId>io.zipkin.brave</groupId>  
+              <artifactId>brave-spancollector-http</artifactId>  
+             <version>3.9.0</version>  
+         </dependency>  
+         <dependency>  
+             <groupId>io.zipkin.brave</groupId>  
+              <artifactId>brave-web-servlet-filter</artifactId>  
+              <version>3.9.0</version>  
+         </dependency>  
+         <dependency>  
+             <groupId>io.zipkin.brave</groupId>  
+             <artifactId>brave-okhttp</artifactId>  
+             <version>3.9.0</version>  
+         </dependency>
+
+        <!-- swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        
+        <!--分页插件-->  
+	    <dependency>
+	      <groupId>com.github.pagehelper</groupId>  
+	      <artifactId>pagehelper</artifactId>  
+	      <version>${pageHelper.version}</version>
+	    </dependency>
+
+        <!-- datasource pool-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+    	<!-- <finalName>iflytek-cloud-web</finalName> -->
+        <plugins>
+		      <!-- <plugin>
+		        <groupId>org.springframework.boot</groupId>
+		        <artifactId>spring-boot-maven-plugin</artifactId>
+		        <configuration>
+		          <fork>true</fork>
+		          <executable>true</executable>
+		        </configuration>
+		      </plugin>-->
+		      <!-- 自动生成代码 插件 begin -->
+				<plugin>
+					<groupId>org.mybatis.generator</groupId>
+					<artifactId>mybatis-generator-maven-plugin</artifactId>
+					<version>1.3.2</version>
+					<configuration>
+						<configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+						<verbose>true</verbose>
+						<overwrite>true</overwrite>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.mybatis.generator</groupId>
+							<artifactId>mybatis-generator-core</artifactId>
+							<version>1.3.2</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+               <!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->  
+               <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-assembly-plugin</artifactId>  
+                <version>2.3</version>  
+                <configuration>  
+                    <appendAssemblyId>false</appendAssemblyId>  
+                    <descriptorRefs>  
+                        <descriptorRef>jar-with-dependencies</descriptorRef>  
+                    </descriptorRefs>  
+                    <archive>  
+                        <manifest>  
+                            <mainClass>com.rgw.s3.TestMultObject</mainClass>  
+                        </manifest>  
+                    </archive>  
+                </configuration>  
+                <executions>  
+                    <execution>  
+                        <id>make-assembly</id>  
+                        <phase>package</phase>  
+                        <goals>  
+                            <goal>assembly</goal>  
+                        </goals>  
+                    </execution>  
+                </executions>  
+            </plugin>
+        </plugins>
+    </build>
+    
+    <!-- nexus 私服配置 -->
+    <repositories>
+        <repository>
+            <id>iflytek-nexus</id>
+             <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>iflytek-nexus</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+    
+</project>

@@ -1,0 +1,7 @@
+com\rgw\s3\CORSset.class
+com\rgw\s3\PutObject.class
+com\rgw\s3\TestMultObject.class
+com\rgw\s3\UrlTest.class
+com\rgw\s3\RGWClient.class
+com\rgw\s3\MultPartUpload.class
+com\rgw\s3\ListBuckets.class

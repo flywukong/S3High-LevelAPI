@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: iflytek_object_storage
+Implementation-Version: 1.0.1.1002
+Built-By: admin
+Implementation-Vendor-Id: com.iflytek.objectStorage
+Build-Jdk: 1.8.0_151
+Implementation-URL: http://maven.apache.org
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
